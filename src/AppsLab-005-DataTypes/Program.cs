@@ -8,5 +8,3 @@ bool isAdult = false;
 Console.WriteLine(isAdult);
 float accountBalance = 120800.55f;
 Console.WriteLine(accountBalance);
-DateTime DnesnyDatum = DateTime.Now;
-Console.WriteLine(DnesnyDatum);
