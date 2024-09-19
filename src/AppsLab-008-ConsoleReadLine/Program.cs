@@ -40,12 +40,15 @@ Console.WriteLine(PrveCislo <= DruheCislo);*/
 Console.WriteLine(vysledok);*/
 
 // Z databazy
+using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks.Dataflow;
+
 var menoUzivatela = "Martin";
 var hesloUzivatela = "123456789";
 
 //Zadane uzivatelom
 var zadaneMeno = "Martin";
-var zadaneHeslo = "1234565789";
+var zadaneHeslo = "123456789";
 
 //var porovnavanieMena = menoUzivatela == zadaneMeno;
 //var porovnavanieHesiel = hesloUzivatela == zadaneHeslo;
@@ -57,10 +60,18 @@ Console.WriteLine("pustime pouzivatela " + prijatPristup);*/
 
 // if (prijatPristup)
 if (menoUzivatela == zadaneMeno && hesloUzivatela == zadaneHeslo)
-{ 
+{
     Console.WriteLine("Heslo sa zhoduje, vitaj! " + menoUzivatela);
 }
 else
 {
     Console.WriteLine("Heslo sa NEZHODUJE, skus znova! ");
 }
+
+
+
+
+
+
+string message = "Hello, World";
+message = message.Trim();
