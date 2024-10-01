@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace AppsLab_013_Conditions;
+﻿namespace AppsLab_013_Conditions;
 
 /// <summary>
 /// Represents the rules of a game.
@@ -19,13 +17,13 @@ public class GameRules
         {
             return false;
         }
+
         if (playerAge < 18)
         {
             return false;
         }
         return true;
     }
-    
 
     /// <summary>
     /// Determines whether the game is over based on the player's health.
@@ -39,6 +37,7 @@ public class GameRules
             return true;
         }
         return false;
+
     }
 
     /// <summary>
@@ -56,4 +55,3 @@ public class GameRules
         return false;
     }
 }
-    
