@@ -7,8 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Cvičenie list\Cvičenie_List.csproj" />
-  </ItemGroup>
-
 </Project>
