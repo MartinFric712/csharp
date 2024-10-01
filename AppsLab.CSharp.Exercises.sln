@@ -95,9 +95,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppsLab-034-Debug", "src\Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cvičenie_Podmienky", "Cvičenie_Podmienky\Cvičenie_Podmienky.csproj", "{E19333B9-2FB4-4C5E-AC3E-A7D5BCB32BE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cvičenie_List", "Cvičenie list\Cvičenie_List.csproj", "{2C7DD18A-2642-46DF-9DBD-554028E77F1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cvičenie_List", "Cvičenie list\Cvičenie_List.csproj", "{2C7DD18A-2642-46DF-9DBD-554028E77F1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cvičenie_Cykly", "Cvičenie_Cykly\Cvičenie_Cykly.csproj", "{651DDD4B-E27F-4839-BB38-FA3D68828B49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cvičenie_Cykly", "Cvičenie_Cykly\Cvičenie_Cykly.csproj", "{651DDD4B-E27F-4839-BB38-FA3D68828B49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -711,6 +711,7 @@ Global
 		{83C963FD-DC23-46E8-9545-F56197164810} = {56555FB0-B513-49EF-9002-A5AF135EA090}
 		{E19333B9-2FB4-4C5E-AC3E-A7D5BCB32BE8} = {56555FB0-B513-49EF-9002-A5AF135EA090}
 		{2C7DD18A-2642-46DF-9DBD-554028E77F1E} = {56555FB0-B513-49EF-9002-A5AF135EA090}
+		{651DDD4B-E27F-4839-BB38-FA3D68828B49} = {56555FB0-B513-49EF-9002-A5AF135EA090}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {655D0BE4-B55E-47FE-A12A-0FEABD873D93}
