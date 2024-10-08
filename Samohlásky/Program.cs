@@ -14,7 +14,7 @@
             int pocetSamohlasok = PocetSamohlasok(vstup);
 
 
-            Console.WriteLine("Text obsahuje " + pocetSamohlasok + " samohlásoky.");
+            Console.WriteLine("Text obsahuje " + pocetSamohlasok + " samohlásky.");
         }
 
 
