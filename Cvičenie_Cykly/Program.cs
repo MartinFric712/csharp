@@ -80,6 +80,8 @@ namespace MyApp
             {
                 Console.WriteLine(postup + "." + name);
                 postup++;
+
+                //Console.WriteLine(postup.ToString().PadLeft(3,´0´
             }
         }
     }
