@@ -7,9 +7,6 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
-            Console.ReadKey();
-            Console.Clear();
-
             List<string> store = new List<string>();
 
             bool isEnd = false;
@@ -77,6 +74,8 @@ namespace MyApp
         }
         public static void PrintMenu()
         {
+            Thread.Sleep(3000);
+;           Console.Clear();
             Console.WriteLine("1.Vypis poloziek");
             Console.WriteLine("2.Pridanie polozky");
             Console.WriteLine("3.Exit");
