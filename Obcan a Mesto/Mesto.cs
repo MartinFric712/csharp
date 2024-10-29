@@ -7,74 +7,33 @@ using System.Threading.Tasks;
 
 namespace Obcan_a_Mesto
 {
-    internal class Mesto
+     class Mesto
     {
-        public string NazovMesta { get; set; }
-        public List<Obcan> obcania { get; set; }
-        public List<Lekar> lekari { get; set; }
-        public List<Stavbar> stavbari { get; set; }
-        public List<Ucitel> ucitelia { get; set; }
+        public string nazovMesta;
+        public List<Obcan> obcania = new List<Obcan>();
+    
 
         public Mesto(string nazovMesta)
         {
-            this.NazovMesta = nazovMesta;
+            this.nazovMesta = nazovMesta;
             obcania = new List<Obcan>();
-            lekari = new List<Lekar>();
-            stavbari = new List<Stavbar>();
-            ucitelia = new List<Ucitel>();
+            
         }
 
 
-        public void PridajUcitelaDoMesta(Ucitel ucitel)
-        {
-            ucitelia .Add(ucitel);
-        }
         
-
-        public void PridajStavbaraDoMesta(Stavbar stavbar)
-        {
-            stavbari.Add(stavbar);
-        }
-        
-
-
-            public void PridajLekaraDoMesta(Lekar lekar)
-        {
-            lekari.Add(lekar);
-        }
-        
-
-
         public void PridajObcanaDoMesta(Obcan obcan)
         {
             obcania.Add(obcan);
         }
         public void VypisObcanov()
+        { 
+            Console.WriteLine("Obcania mesta " + nazovMesta + ":");
+            foreach (var obcan in obcania)
             {
-                Console.WriteLine("Obcania mesta " + NazovMesta + ":");
-                foreach (var obcan in obcania) 
-                {
-                    obcan.VypisInfo();
-                }
-                Console.WriteLine();
-            foreach (var lekar in lekari)
-            {
-                lekar.Liecenie();
-            }
-            Console.WriteLine();
-            foreach (var stavbar in stavbari)
-            {
-                stavbar.Stavanie();
-            }
-            Console.WriteLine();
-            foreach (var ucitel in ucitelia)
-            {
-                ucitel.Ucenie();
-            }
-            Console.WriteLine();
-
-
+                obcan.VypisInfo();
             }
         }
     }
+}
 

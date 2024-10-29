@@ -6,19 +6,16 @@ using System.Threading.Tasks;
 
 namespace Obcan_a_Mesto
 {
-    internal class Stavbar
+    public class Stavbar : Obcan
     {
-        public string Meno { get; set; }
-        public int Vek { get; set; }
-
-        public Stavbar(string meno, int vek)
+        public string typTehli;
+       public Stavbar(string Meno, int Vek, string typTehli): base (Meno, Vek)
         {
-            Meno = meno;
-            Vek = vek;
+            this.typTehli=typTehli;
         }
-        public void Stavanie()
+        public new void VypisInfo()
         {
-            Console.WriteLine("Meno: " + Meno + "Vek: " + Vek + " je stavbar!");
+            Console.WriteLine("Meno: " + Meno + " Vek: " + Vek + " stava s " + typTehli + "!");
         }
     }
 }

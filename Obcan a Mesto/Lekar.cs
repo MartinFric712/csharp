@@ -7,19 +7,13 @@ using System.Threading.Tasks;
 
 namespace Obcan_a_Mesto
 {
-    internal class Lekar
+    public class Lekar : Obcan
     {
-        public string Meno { get; set; }
-        public int Vek { get; set; }
-
-        public Lekar(string name, int vek)
+        public Lekar(string Meno, int Vek) : base(Meno, Vek) { }
+        public new void VypisInfo()
         {
-            Meno = name;
-            Vek = vek;
-        }
-        public void Liecenie()
-        {
-            Console.WriteLine("Meno: " + Meno + "Vek: " + Vek + " je lekar!");
+            Console.WriteLine("Meno: " + Meno + " Vek: " + Vek + " je lekar!");
         }
     }
 }
+

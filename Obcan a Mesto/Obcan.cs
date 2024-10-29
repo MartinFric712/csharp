@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Obcan_a_Mesto
 {
-    internal class Obcan
+    public class Obcan
     {
         public string Meno { get; set; }
         public int Vek { get; set; }
@@ -18,6 +18,10 @@ namespace Obcan_a_Mesto
         public void VypisInfo()
         {
             Console.WriteLine("Meno: " + Meno + "Vek: " + Vek);
+        }
+        public void VypisVek()
+        {
+            Console.WriteLine("Vek: " + Vek);
         }
     }
 }
