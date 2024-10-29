@@ -10,7 +10,7 @@
              
             //Vytvorenie obcanov
             Obcan obcan1 = new Obcan("Jozko Mrkvicka, ", 24);
-            Obcan obcan2 = new Obcan("Fero zbesily, ", 28);
+            Obcan obcan2 = new Obcan("Fero Zbesily, ", 28);
             Obcan obcan3 = new Obcan("Martin Nemec, ", 35);
             Obcan obcan4 = new Obcan("Jakub Trieska, ", 26);
 
@@ -38,7 +38,7 @@
             Zilina.PridajLekaraDoMesta(lekar1);
             
             //Pridanie lekarov do Martina
-            Zilina.PridajLekaraDoMesta(lekar2);
+            Martin.PridajLekaraDoMesta(lekar2);
 
             //Pridanie stavbarov do Ziliny
             Zilina.PridajStavbaraDoMesta(stavbar1);

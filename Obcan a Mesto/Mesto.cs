@@ -56,7 +56,24 @@ namespace Obcan_a_Mesto
                 {
                     obcan.VypisInfo();
                 }
-                Console.WriteLine("\n");
+                Console.WriteLine();
+            foreach (var lekar in lekari)
+            {
+                lekar.Liecenie();
+            }
+            Console.WriteLine();
+            foreach (var stavbar in stavbari)
+            {
+                stavbar.Stavanie();
+            }
+            Console.WriteLine();
+            foreach (var ucitel in ucitelia)
+            {
+                ucitel.Ucenie();
+            }
+            Console.WriteLine();
+
+
             }
         }
     }
