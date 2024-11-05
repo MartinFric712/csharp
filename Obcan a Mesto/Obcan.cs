@@ -15,13 +15,9 @@ namespace Obcan_a_Mesto
             Meno = meno;
             Vek = vek;
         }
-        public void VypisInfo()
+        public virtual void VypisInfo()
         {
-            Console.WriteLine("Meno: " + Meno + "Vek: " + Vek);
-        }
-        public void VypisVek()
-        {
-            Console.WriteLine("Vek: " + Vek);
+            Console.WriteLine("Meno: " + Meno + ", Vek: " + Vek);
         }
     }
 }

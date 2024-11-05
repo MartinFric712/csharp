@@ -15,7 +15,7 @@ namespace Obcan_a_Mesto
         }
         public new void VypisInfo()
         {
-            Console.WriteLine("Meno:" + Meno  + " Vek : " + Vek + " stava s " + typTehli + "a ma" + pocetTehiel + "Tehiel");
+            Console.WriteLine("Meno:" + Meno  + " Vek : " + Vek + " stava s "  + "a ma" + pocetTehiel + "Tehiel");
         }
     }
 }

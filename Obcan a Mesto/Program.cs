@@ -7,17 +7,20 @@
             // Vytvorenie mesta
             Mesto Zilina = new Mesto(nazovMesta: "Zilina");
 
-            // Pridanie obcanov roznych typov
-            Lekar lek = new Lekar(Meno: "Martin", Vek: 34);
-            Stavbar stav = new Stavbar(Meno: "Alex", Vek: 38, typTehli: "Kamenne");
-            SeniorStavbar senStav = new SeniorStavbar(Meno: "Igor", Vek: 45, typTehli: "Kamenne", pocetTehiel: 30);
+            // Vytvorenie a zaradenie obcanov
+            /*while (Zilina.obcania.Count < 31)
+            {
+                Obcan obcan = GeneratorObcanov.GenreujObcana();
+                Zilina.PridajObcanaDoMesta(obcan);
+            }*/
 
-            // Pridanie obcanov do mesta
-            Zilina.PridajObcanaDoMesta(lek);
-            Zilina.PridajObcanaDoMesta(stav);
-            Zilina.PridajObcanaDoMesta(senStav);
+            for (int i = 0; i < 31; i++) 
+            {
+                Stavbar obcan = GeneratorObcanov.GenerujJazyk();
+                Zilina.PridajObcanaDoMesta(obcan);
+            }
 
-            // Vypis vsetkych obcanov mesta
+            //Vypis obcanov Ziliny
             Zilina.VypisObcanov();
         }
     }
