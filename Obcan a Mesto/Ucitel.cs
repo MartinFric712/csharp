@@ -18,7 +18,7 @@ namespace Obcan_a_Mesto
         }
         public void Ucenie()
         {
-            Console.WriteLine("Meno: " + Meno + "Vek: " + Vek + " je ucitel!");
+            Console.WriteLine("Meno: " + Meno + " Vek: " + Vek + " je ucitel!");
         }
     }
 }
