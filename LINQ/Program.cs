@@ -24,12 +24,12 @@ namespace LINQ
             List<Kniha> knihyOdNajnovsej = knihy.OrderByDescending(kniha => kniha.RokVydania).ToList();
             List<Kniha> knihyPreDetiOdNajstarsej = knihy.Where(kniha => kniha.JePreDeti).ToList();
             List<Kniha> kinhyPreDetiOdNajnovsej = knihy.Where(kniha => kniha.JePreDeti).OrderBy(kniha => kniha.RokVydania).ToList(); // !kniha - znamena opak, True = False a naopak :)
-                                                                                                                                                                                                                           
+
             var KnihyPodlaRoku = knihy.GroupBy(u => u.RokVydania).Select(grp => grp.ToList()).ToList();
 
- 
 
-                foreach (List<Kniha> skupinka in KnihyPodlaRoku)
+
+            foreach (List<Kniha> skupinka in KnihyPodlaRoku)
             {
                 Console.WriteLine($"Skupinka:");
 
@@ -39,7 +39,7 @@ namespace LINQ
                 }
             }
 
-                
+
             Console.WriteLine();
             var knihyPodlaRoku_IDictionary = knihy.GroupBy(o => o.RokVydania).ToDictionary(g => g.Key, g => g.ToList());
             foreach (var skupinka in knihyPodlaRoku_IDictionary)
@@ -52,7 +52,7 @@ namespace LINQ
             }
 
 
-            
+
 
 
 
