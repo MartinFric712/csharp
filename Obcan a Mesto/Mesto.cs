@@ -9,10 +9,19 @@ namespace Obcan_a_Mesto
 {
      class Mesto
     {
-        public string nazovMesta;
-        public List<Obcan> obcania = new List<Obcan>();
-    
-
+        private string nazovMesta;
+        private List<Obcan> obcania = new List<Obcan>();
+  
+        public string NazovMesta
+        {
+            get { return nazovMesta; }
+            set { nazovMesta = value; }
+        }
+        public List<Obcan> Obcania
+        {
+            get { return obcania;  }
+            set { obcania = value; }
+        }
         public Mesto(string nazovMesta)
         {
             this.nazovMesta = nazovMesta;

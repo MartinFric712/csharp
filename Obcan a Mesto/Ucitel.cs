@@ -8,8 +8,8 @@ namespace Obcan_a_Mesto
 {
     internal class Ucitel
     {
-        public string Meno { get; set; }
-        public int Vek { get; set; }
+        protected string Meno { get; set; }
+        protected int Vek { get; set; }
 
         public Ucitel(string meno, int vek)
         {

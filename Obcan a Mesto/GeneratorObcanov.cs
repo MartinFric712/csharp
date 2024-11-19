@@ -6,7 +6,7 @@
             "Tomáš", "Eva", "Michal", "Zuzana", "Marek", "Katarína", "Andrej", "Lenka", "Patrik",
             "Monika", "Filip", "Veronika", "Richard", "Simona", "Róbert", "Mária", "Jakub", "Barbora",
             "Adam", "Dominika", "Lukáš", "Daniela", "Vladimír", "Nikola" };
-        public static string[] programovacieJazyky = { "C#", "C++","C","Python","Java" };
+        public static string[] programovacieJazyky = { "Betonova", "Maltova","Plastova","Ocelova","Gumova" };
         public static Obcan GenreujObcana()
         {
             Random random = new Random();

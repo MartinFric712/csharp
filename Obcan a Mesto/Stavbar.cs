@@ -8,14 +8,14 @@ namespace Obcan_a_Mesto
 {
     public class Stavbar : Obcan
     {
-        public string programovacijazyk;
-       public Stavbar(string meno, int Vek, string programovacijazyk): base (meno, Vek)
+        protected string typtehli { get; set; }
+       public Stavbar(string meno, int Vek, string typtehli): base (meno, Vek)
         {
-            this.programovacijazyk = programovacijazyk;
+            this.typtehli = typtehli;
         }
         public override void VypisInfo()
         {
-            Console.WriteLine("Meno: " + Meno + " Vek: " + Vek + " programuje s " + programovacijazyk + "!");
+            Console.WriteLine("Meno: " + Meno + " Vek: " + Vek + " stava s " + typtehli + " tehla !");
         }
     }
 }
