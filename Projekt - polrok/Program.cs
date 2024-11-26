@@ -7,6 +7,9 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
+
+            // Vytvorenie funkcií
+
             List<string> store = new List<string>();
 
             bool isEnd = false;
@@ -17,6 +20,38 @@ namespace MyApp
 
                 switch (answer)
                 {
+                    case "4":
+                        Console.WriteLine("Zadaj Prihlasovacie meno");
+                        var zadavaniemena = Console.ReadLine();
+                        Console.WriteLine("  ");
+                        Console.WriteLine("Zadaj Heslo");
+                        var zadaniehesla = Console.ReadLine();
+                        Console.WriteLine("  ");
+
+                        var meno = "Martin F";
+                        var menO = "Martin K";
+                        var heslo = "Stefan";
+                        var heslO = "Janosik123";
+
+
+                        if (zadavaniemena == meno && zadaniehesla == heslo)
+                        {
+                            Console.Clear();
+                            Menu();
+                            Pridavacia();
+                        }
+                        else if (zadavaniemena == menO && zadaniehesla == heslO)
+                        {
+                            Console.Clear();
+                            Menu();
+                            Pridavacia();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nesprávne meno alebo heslo");
+                        }
+                        break;
+
                     case "1":
                         foreach (var item in store)
                         {
@@ -44,6 +79,19 @@ namespace MyApp
                 }
             }
         }
+
+        private static void Pridavacia()
+        {
+            
+        }
+
+        private static void Menu()
+        {
+            
+        }
+
+        // 
+
         public static void AddItem(List<string> itemList, string itemName, int itemCount)
         {
             string foundedItem = null;

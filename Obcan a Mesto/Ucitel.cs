@@ -6,10 +6,20 @@ using System.Threading.Tasks;
 
 namespace Obcan_a_Mesto
 {
-    internal class Ucitel
+    internal class Ucitel:Obcan
     {
-        protected string Meno { get; set; }
-        protected int Vek { get; set; }
+        protected string meno;
+        protected int vek;
+        public string Meno
+        {
+            get { return meno; }
+            set { meno = value; }
+        }
+        public int Vek
+        {
+            get { return vek; }
+            set { vek = value; }
+        }
 
         public Ucitel(string meno, int vek)
         {
@@ -18,7 +28,7 @@ namespace Obcan_a_Mesto
         }
         public void Ucenie()
         {
-            Console.WriteLine("Meno: " + Meno + " Vek: " + Vek + " je ucitel!");
+            Console.WriteLine("Meno: " + Meno + " Vek: " + Vek + " je ucitel " + "Stav: " + stav + "!" );
         }
     }
 }

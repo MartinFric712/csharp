@@ -17,16 +17,18 @@
             return obcan;
             
         }
-        public static Stavbar GenerujJazyk()
+        public static Obcan GenerujJazyk()
         {
-            Random random2 = new Random();
-            int pozicia = random2.Next(mena.Length);
+            Random r = new Random();
+            int pozicia = r.Next(mena.Length);
             string meno = mena[pozicia];
-            int vek = random2.Next(15, 116);
-            int pozicia2 = random2.Next(programovacieJazyky.Length);
-            string programovacijazyk = programovacieJazyky[pozicia2];
-            Stavbar programator = new Stavbar(meno, vek, programovacijazyk);
-            return programator;
+            int vek = r.Next(15, 116);
+            Obcan obcan = new Obcan(meno, vek);
+            int dlzkaEnum = (Enum.GetValues<StavObcana>().Length);
+            int nahodnyIndex = r.Next(dlzkaEnum);
+            obcan.Stav = (StavObcana)nahodnyIndex;
+            obcan.Stav = StavObcana.Cudzinec;
+            return obcan;
 
 
         }

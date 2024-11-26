@@ -16,7 +16,7 @@
 
             for (int i = 0; i < 31; i++) 
             {
-                Stavbar obcan = GeneratorObcanov.GenerujJazyk();
+                Obcan obcan = GeneratorObcanov.GenerujJazyk();
                 Zilina.PridajObcanaDoMesta(obcan);
             }
 

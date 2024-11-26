@@ -12,7 +12,7 @@ namespace Obcan_a_Mesto
         public Lekar(string Meno, int Vek) : base(Meno, Vek) { }
         public new void VypisInfo()
         {
-            Console.WriteLine("Meno: " + Meno + " Vek: " + Vek + " je lekar!");
+            Console.WriteLine("Meno: " + Meno + " Vek: " + Vek + " je lekar " + "Stav: " + stav + "!");
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Obcan_a_Mesto
         }
         public override void VypisInfo()
         {
-            Console.WriteLine("Meno: " + Meno + " Vek: " + Vek + " stava s " + typtehli + " tehla !");
+            Console.WriteLine("Meno: " + Meno + " Vek: " + Vek + " stava s " + typtehli + " tehla " + "Stav: " + stav + "!");
         }
     }
 }
