@@ -4,24 +4,19 @@
     {
         static void Main(string[] args)
         {
-            // Vytvorenie mesta
-            Mesto Zilina = new Mesto(nazovMesta: "Zilina");
-
-            // Vytvorenie a zaradenie obcanov
-            /*while (Zilina.obcania.Count < 31)
+            Mesto zilina = Mesto.NacitajZoSuboru("mesto.json");
+            if (zilina == null)
             {
-                Obcan obcan = GeneratorObcanov.GenreujObcana();
-                Zilina.PridajObcanaDoMesta(obcan);
-            }*/
-
-            for (int i = 0; i < 31; i++) 
-            {
-                Obcan obcan = GeneratorObcanov.GenerujJazyk();
-                Zilina.PridajObcanaDoMesta(obcan);
+                zilina = new Mesto("Zilina");
+                for (int i = 0; i < 31; i++)
+                {
+                    Obcan obcan = GeneratorObcanov.GenreujObcana();
+                    zilina.PridajObcanaDoMesta(obcan);
+                }
+                string subor = "mesto.json";
+                zilina.UlozDoSUboru(subor);
             }
-
-            //Vypis obcanov Ziliny
-            Zilina.VypisObcanov();
+            zilina.VypisObcanov();
         }
     }
 }

@@ -42,6 +42,10 @@ namespace Cvičenie_Výnimky
             {
                 throw new ArgumentException("Incorrect name or surname");
             }
+            /*if (name == fuck)
+            {
+                throw new ArgumentException("inncorrect name or surname");
+            }*/
             if (InappropriateNames.Contains(name) || InappropriateNames.Contains(surName))
             {
                 throw new ArgumentException("Incorrect name or surname");

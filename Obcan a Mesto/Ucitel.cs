@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Obcan_a_Mesto
+/*namespace Obcan_a_Mesto
 {
     internal class Ucitel:Obcan
     {
@@ -31,4 +31,4 @@ namespace Obcan_a_Mesto
             Console.WriteLine("Meno: " + Meno + " Vek: " + Vek + " je ucitel " + "Stav: " + stav + "!" );
         }
     }
-}
+}*/
