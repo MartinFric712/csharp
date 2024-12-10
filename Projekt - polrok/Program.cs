@@ -277,7 +277,7 @@ public class Program
         Console.WriteLine("2. Pridanie knihy");
         Console.WriteLine("3. Odobratie knihy");
         Console.WriteLine("4. Požičiavanie knihy");
-        Console.WriteLine("5. Exit");
+        Console.WriteLine("5. Odhlásiť sa");
         Console.WriteLine("Vyberte akciu:");
     }
 
