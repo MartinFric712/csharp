@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projekt___polrok;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -20,6 +21,11 @@ public class User
         Password = password;
         Role = role;
     }
+    public override string ToString()
+    {
+        return $"{Username}, {Password}, {Role}";
+    }
+
 
     public bool CanBorrowBook()
     {
@@ -37,66 +43,11 @@ public class Program
     static List<User> users = new List<User>();
     static List<string> store = new List<string>
     {
-        "1. A Tale of Two Cities, 1859, História, Charles Dickens",
-        "2. 1984, 1949, Sci-fi/Dystopický román, George Orwell",
-        "3. Brave New World, 1932, Sci-fi/Dystopický román, Aldous Huxley",
-        "4. Crime and Punishment, 1866, Psychologický román, Fyodor Dostoevsky",
-        "5. Don Quixote, 1605, Román, Miguel de Cervantes",
-        "6. Dracula, 1897, Horor, Bram Stoker",
-        "7. Emma, 1815, Román, Jane Austen",
-        "8. Frankenstein, 1818, Sci-fi/Horor, Mary Shelley",
-        "9. Great Expectations, 1861, Román, Charles Dickens",
-        "10. Harry Potter and the Philosopher's Stone, 1997, Fantasy, J.K. Rowling",
-        "11. Jane Eyre, 1847, Román, Charlotte Brontë",
-        "12. Moby-Dick, 1851, Román, Herman Melville",
-        "13. Pride and Prejudice, 1813, Román, Jane Austen",
-        "14. The Catcher in the Rye, 1951, Román, J.D. Salinger",
-        "15. The Great Gatsby, 1925, Román, F. Scott Fitzgerald",
-        "16. The Hobbit, 1937, Fantasy, J.R.R. Tolkien",
-        "17. The Lord of the Rings, 1954-1955, Fantasy, J.R.R. Tolkien",
-        "18. To Kill a Mockingbird, 1960, Román, Harper Lee",
-        "19. War and Peace, 1869, Román, Leo Tolstoy",
-        "20. Wuthering Heights, 1847, Román, Emily Brontë",
-        "21. A Clockwork Orange, 1962, Sci-fi/Dystopický román, Anthony Burgess",
-        "22. Anna Karenina, 1877, Román, Leo Tolstoy",
-        "23. Catch-22, 1961, Satirický román, Joseph Heller",
-        "24. Dune, 1965, Sci-fi, Frank Herbert",
-        "25. Gone with the Wind, 1936, Historický román, Margaret Mitchell",
-        "26. Heart of Darkness, 1899, Novela, Joseph Conrad",
-        "27. Les Misérables, 1862, Historický román, Victor Hugo",
-        "28. Lolita, 1955, Román, Vladimir Nabokov",
-        "29. Madame Bovary, 1857, Román, Gustave Flaubert",
-        "30. One Hundred Years of Solitude, 1967, Magický realizmus, Gabriel García Márquez",
-        "31. Rebecca, 1938, Gotický román, Daphne du Maurier",
-        "32. Sense and Sensibility, 1811, Román, Jane Austen",
-        "33. Slaughterhouse-Five, 1969, Sci-fi/Anti-vojnový román, Kurt Vonnegut",
-        "34. The Adventures of Huckleberry Finn, 1884, Dobrodružný román, Mark Twain",
-        "35. The Alchemist, 1988, Filozofický román, Paulo Coelho",
-        "36. Animal Farm, 1945, Satira, George Orwell",
-        "37. Beloved, 1987, Román, Toni Morrison",
-        "38. Charlotte's Web, 1952, Detský román, E.B. White",
-        "39. Cloud Atlas, 2004, Sci-fi, David Mitchell",
-        "40. Diary of a Young Girl, 1947, Memoár, Anne Frank",
-        "41. East of Eden, 1952, Román, John Steinbeck",
-        "42. Fahrenheit 451, 1953, Sci-fi/Dystopický román, Ray Bradbury",
-        "43. Gone Girl, 2012, Thriller, Gillian Flynn",
-        "44. Gulliver's Travels, 1726, Satira, Jonathan Swift",
-        "45. Little Women, 1868, Román, Louisa May Alcott",
-        "47. Memoirs of a Geisha, 1997, Historický román, Arthur Golden",
-        "48. Middlemarch, 1871, Román, George Eliot",
-        "49. Norwegian Wood, 1987, Román, Haruki Murakami",
-        "50. Of Mice and Men, 1937, Román, John Steinbeck",
-        "51. On the Road, 1957, Beat generation, Jack Kerouac",
-        "52. Persuasion, 1817, Román, Jane Austen",
-        "53. The Big Sleep, 1939, Detektívka, Raymond Chandler",
-        "54. The Brothers Karamazov, 1880, Román, Fyodor Dostoevsky",
-        "55. The Goldfinch, 2013, Román, Donna Tartt",
-        "56. The Road, 2006, Post-apokalyptický román, Cormac McCarthy",
-        "57. The Secret Garden, 1911, Detský román, Frances Hodgson Burnett",
+        
     };
 
     static List<string> borrowedBooks = new List<string>();
-
+    //Výpis menu
     public static void Main()
     {
         VypisInfo();
@@ -129,14 +80,44 @@ public class Program
                 Console.WriteLine("Neplatná voľba. Skúste znova.");
             }
         }
+        var kniha = new Kniha("Pan prstenov", 1995, "Romanticky", "Roman Besny");
     }
 
+    //Registrácia / kontrola hesla
     public static void RegisterUser(List<User> users)
     {
-        Console.Write("Zadajte používateľské meno: ");
-        string username = Console.ReadLine();
-        Console.Write("Zadajte heslo: ");
-        string password = Console.ReadLine();
+        string username;
+        while (true)
+        {
+            Console.Write("Zadajte používateľské meno: ");
+            username = Console.ReadLine();
+
+            if (username.Length >= 3 && username.Length <= 15)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Používateľské meno musí byť dlhé aspoň 3 a najviac 15 znakov. Skúste znova.");
+            }
+        }
+
+        string password;
+        while (true)
+        {
+            Console.Write("Zadajte heslo: ");
+            password = Console.ReadLine();
+
+            if (password.Length >= 5 && password.Length <= 10)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Heslo musí byť dlhé aspoň 5 a najviac 10 znakov. Skúste znova.");
+            }
+        }
+
         Console.Write("Vyberte rolu (1-Student, 2-Admin): ");
         Role role = (Console.ReadLine() == "1") ? Role.Student : Role.Admin;
 
@@ -146,6 +127,9 @@ public class Program
         Console.Clear();
         VypisInfo();
     }
+
+
+    //Prihlasovanie
 
     public static void LoginUser(List<User> users)
     {
@@ -167,6 +151,7 @@ public class Program
         }
     }
 
+    //Prístup k funkciam ako študent/admin
     public static void DisplayMenu(User loggedInUser)
     {
         bool isEnd = false;
@@ -184,9 +169,12 @@ public class Program
                 case "2":
                     if (loggedInUser.CanAccessAllAreas())
                     {
-                        Console.WriteLine("Zadajte názov knihy na pridanie:");
+                        Console.WriteLine("Zadajte názov knihy na pridanie (alebo 0 pre návrat):");
                         var newItemName = Console.ReadLine();
-                        AddItem(store, newItemName);
+                        if (newItemName != "0")
+                        {
+                            AddItem(store, newItemName);
+                        }
                     }
                     else
                     {
@@ -196,9 +184,12 @@ public class Program
                 case "3":
                     if (loggedInUser.CanAccessAllAreas())
                     {
-                        Console.WriteLine("Zadajte názov knihy na odobratie:");
+                        Console.WriteLine("Zadajte názov knihy na odobratie (alebo 0 pre návrat):");
                         var itemName = Console.ReadLine();
-                        RemoveItem(store, itemName);
+                        if (itemName != "0")
+                        {
+                            RemoveItem(store, itemName);
+                        }
                     }
                     else
                     {
@@ -208,9 +199,12 @@ public class Program
                 case "4":
                     if (loggedInUser.CanBorrowBook())
                     {
-                        Console.WriteLine("Zadajte názov knihy na požičiavanie:");
+                        Console.WriteLine("Zadajte názov knihy na požičiavanie (alebo 0 pre návrat):");
                         var bookName = Console.ReadLine();
-                        BorrowBook(store, borrowedBooks, bookName);
+                        if (bookName != "0")
+                        {
+                            BorrowBook(store, borrowedBooks, bookName);
+                        }
                     }
                     else
                     {
@@ -218,6 +212,9 @@ public class Program
                     }
                     break;
                 case "5":
+                    PrintBibliography();
+                    break;
+                case "6":
                     isEnd = true;
                     break;
                 default:
@@ -227,6 +224,8 @@ public class Program
         }
     }
 
+
+    //Pridávanie kníh
     public static void AddItem(List<string> itemList, string itemName)
     {
         if (!itemList.Contains(itemName))
@@ -238,8 +237,11 @@ public class Program
         {
             Console.WriteLine($"Kniha {itemName.ToUpper()} už existuje v knižnici.");
         }
+        Console.WriteLine("\nStlačte Enter, aby ste sa vrátili do menu.");
+        Console.ReadLine();
     }
 
+    //Odtraňovanie kníh
     public static void RemoveItem(List<string> itemList, string itemName)
     {
         if (itemList.Contains(itemName))
@@ -251,7 +253,11 @@ public class Program
         {
             Console.WriteLine($"Kniha {itemName.ToUpper()} nebola nájdená v knižnici.");
         }
+        Console.WriteLine("\nStlačte Enter, aby ste sa vrátili do menu.");
+        Console.ReadLine();
     }
+
+    //Požičiavanie kníh
 
     public static void BorrowBook(List<string> itemList, List<string> borrowedList, string itemName)
     {
@@ -265,23 +271,63 @@ public class Program
         {
             Console.WriteLine($"Kniha {itemName.ToUpper()} nebola nájdená v knižnici.");
         }
+        Console.WriteLine("\nStlačte Enter, aby ste sa vrátili do menu.");
+        Console.ReadLine();
     }
 
+    //Výpis menu
     public static void PrintMenu()
     {
         Thread.Sleep(3000);
         Console.Clear();
         Menu();
-        Console.WriteLine();
-        Console.WriteLine("1. Výpis kníh");
+        Console.WriteLine("\n1. Výpis kníh");
         Console.WriteLine("2. Pridanie knihy");
         Console.WriteLine("3. Odobratie knihy");
         Console.WriteLine("4. Požičiavanie knihy");
-        Console.WriteLine("5. Odhlásiť sa");
+        Console.WriteLine("5. Vypísať bibliografiu");
+        Console.WriteLine("6. Odhlásiť sa");
         Console.WriteLine("Vyberte akciu:");
     }
+    public static void SaveUsers()
+    {
+        using (StreamWriter writer = new StreamWriter("users.txt"))
+        {
+            foreach (var user in users)
+            {
+                writer.WriteLine(user.ToString());
+            }
+        }
+        Console.WriteLine("Používatelia boli uložený.");
+    }
 
-    public static void DisplayBooks()
+    public static void LoadUsers()
+    {
+        if (File.Exists("users.txt"))
+        {
+            using (StreamReader reader = new StreamReader("users.txt"))
+            {
+                string line; while ((line = reader.ReadLine()) != null)
+                {
+                    var parts = line.Split(',');
+                    if (parts.Length == 3)
+                    {
+                        var username = parts[0];
+                        var password = parts[1];
+                        var role = (Role)Enum.Parse(typeof(Role), parts[2]);
+                        users.Add(new User(username, password, role));
+                    }
+                }
+            }
+            Console.WriteLine("Používatelia boli načítaní.");
+        }
+        else
+        {
+            Console.WriteLine("Žiadny uložený používateľ nebol nájdený.");
+        }
+    }
+        //Výpis kníh
+        public static void DisplayBooks()
     {
         Console.WriteLine("Zoznam kníh:");
         foreach (var item in store)
@@ -293,6 +339,20 @@ public class Program
     }
 
 
+    //Bibliografický výpis
+    public static void PrintBibliography()
+    {
+        Console.WriteLine("Bibliografia kníh:");
+        foreach (var item in store)
+        {
+            Console.WriteLine(item);
+        }
+        Console.WriteLine("\nStlačte Enter, aby ste sa vrátili do menu.");
+        Console.ReadLine();
+    }
+
+
+    //Nadpis menu 1
     public static void VypisInfo()
     {
         Console.Clear();
@@ -305,6 +365,8 @@ public class Program
         Console.WriteLine("                     |  .  \\  |  |\\   | |  |   /  /----.|  |\\   | |  | |  `----./  _____  \\");
         Console.WriteLine("                     |__|\\__\\ |__| \\__| |__|  /________||__| \\__| |__|  \\______/__/     \\__\\");
     }
+
+    //Nadpis menu 2
 
     public static void Menu()
     {
