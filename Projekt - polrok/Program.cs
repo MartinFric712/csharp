@@ -89,7 +89,7 @@ public class Program
         new Book(42, "Žiariace", "Stephen King", 1977, "Horor"),
         new Book(43, "Dracula", "Bram Stoker", 1897, "Horor"),
         new Book(44, "Mechanický pomaranč", "Anthony Burgess", 1962, "Dystopia"),
-        new Book(45, "Rozum a cit", "Jane Austen", 1811, "Romance"), 
+        new Book(45, "Rozum a cit", "Jane Austen", 1811, "Romance"),
         new Book(46, "Odviate vetrom", "Margaret Mitchell", 1936, "Historický"),
         new Book(47, "Portrét Doriana Graya", "Oscar Wilde", 1890, "Filozofická"),
         new Book(48, "Zvieracia farma", "George Orwell", 1945, "Politická satira"),
@@ -151,8 +151,15 @@ public class Program
         string username;
         while (true)
         {
-            Console.Write("Zadajte používateľské meno: ");
+            Console.Write("Zadajte používateľské meno (alebo 0 pre návrat do menu): ");
             username = Console.ReadLine();
+
+            if (username == "0")
+            {
+                Console.Clear();
+                VypisInfo();
+                return;
+            }
 
             if (username.Length >= 3 && username.Length <= 15)
             {
@@ -167,8 +174,15 @@ public class Program
         string password;
         while (true)
         {
-            Console.Write("Zadajte heslo: ");
+            Console.Write("Zadajte heslo (alebo 0 pre návrat do menu): ");
             password = Console.ReadLine();
+
+            if (password == "0")
+            {
+                Console.Clear();
+                VypisInfo();
+                return;
+            }
 
             if (password.Length >= 5 && password.Length <= 10)
             {
@@ -195,10 +209,25 @@ public class Program
 
     public static void LoginUser(List<User> users)
     {
-        Console.Write("Používateľské meno: ");
+        Console.Write("Používateľské meno (alebo 0 pre návrat do menu): ");
         string username = Console.ReadLine();
-        Console.Write("Heslo: ");
+
+        if (username == "0")
+        {
+            Console.Clear();
+            VypisInfo();
+            return;
+        }
+
+        Console.Write("Heslo (alebo 0 pre návrat do menu): ");
         string password = Console.ReadLine();
+
+        if (password == "0")
+        {
+            Console.Clear();
+            VypisInfo();
+            return;
+        }
 
         User loggedInUser = users.Find(user => user.Username == username && user.Password == password);
 
@@ -227,6 +256,7 @@ public class Program
             switch (answer)
             {
                 case "1":
+                    LoadBooksFromJson();
                     DisplayBooks();
                     break;
                 case "2":
@@ -239,7 +269,7 @@ public class Program
                         var zaner = Console.ReadLine();
                         if (newItemName != "0")
                         {
-                            AddItem(store,newItemName, menoAutora, rokVydania, zaner);
+                            AddItem(store, newItemName, menoAutora, rokVydania, zaner);
                         }
                     }
                     else
@@ -248,9 +278,10 @@ public class Program
                     }
                     break;
                 case "3":
-                    if (loggedInUser.CanAccessAllAreas())                    {
+                    if (loggedInUser.CanAccessAllAreas())
+                    {
                         Console.WriteLine("Zadajte ID knihy na odobratie (alebo 0 pre návrat):");
-                        
+
                         var itemName = int.Parse(Console.ReadLine());
                         if (itemName != 0)
                         {
@@ -279,6 +310,7 @@ public class Program
                     }
                     break;
                 case "6":
+                    SaveBooksToJson();
                     isEnd = true;
                     break;
                 default:
@@ -295,7 +327,7 @@ public class Program
         //vyhladam maximalne ID, pridam +1
         int newId = itemList.Count > 0 ? itemList.Max(x => x.ID) + 1 : 1;
         //vytvorim knihu s novym ID a novym nazvom
-        Book novaKniha = new Book ( newId, NazovKnihy,  MenoAutora, RokVydania,  Zaner) ;
+        Book novaKniha = new Book(newId, NazovKnihy, MenoAutora, RokVydania, Zaner);
 
         if (!itemList.Any(x => x.NazovKnihy == NazovKnihy))
         {
@@ -330,67 +362,64 @@ public class Program
     //Požičiavanie kníh
 
     public static void BorrowBook(List<Book> itemList, List<Book> borrowedList, int itemID)
-        {
+    {
         Book najdenaKniha = itemList.Where(x => x.ID == itemID).First();
         if (najdenaKniha != null)
         {
-                itemList.Remove(najdenaKniha);
-                borrowedList.Add(najdenaKniha);
-                Console.WriteLine($"Kniha {najdenaKniha.NazovKnihy} bola požičaná.");
-            }
-            else
-            {
-                Console.WriteLine($"Kniha {najdenaKniha.NazovKnihy} nebola nájdená v knižnici.");
-            }
-            Console.WriteLine("\nStlačte Enter, aby ste sa vrátili do menu.");
-            Console.ReadLine();
+            itemList.Remove(najdenaKniha);
+            borrowedList.Add(najdenaKniha);
+            Console.WriteLine($"Kniha {najdenaKniha.NazovKnihy} bola požičaná.");
         }
+        else
+        {
+            Console.WriteLine($"Kniha {najdenaKniha.NazovKnihy} nebola nájdená v knižnici.");
+        }
+        Console.WriteLine("\nStlačte Enter, aby ste sa vrátili do menu.");
+        Console.ReadLine();
+    }
 
-        //Výpis menu
-        public static void PrintMenu()
-        {
-            Thread.Sleep(3000);
-            Console.Clear();
-            Menu();
-            Console.WriteLine("\n1. Výpis kníh");
-            Console.WriteLine("2. Pridanie knihy");
-            Console.WriteLine("3. Odobratie knihy");
-            Console.WriteLine("4. Požičiavanie knihy");
-            Console.WriteLine("6. Odhlásiť sa");
-            Console.WriteLine("Vyberte akciu:");
-        }
-        //Výpis kníh
-        public static void DisplayBooks()
-        {
-            Console.WriteLine("Zoznam kníh:");
+    //Výpis menu
+    public static void PrintMenu()
+    {
+        Thread.Sleep(3000);
+        Console.Clear();
+        Menu();
+        Console.WriteLine("\n1. Výpis kníh");
+        Console.WriteLine("2. Pridanie knihy");
+        Console.WriteLine("3. Odobratie knihy");
+        Console.WriteLine("4. Požičiavanie knihy");
+        Console.WriteLine("6. Odhlásiť sa");
+        Console.WriteLine("Vyberte akciu:");
+    }
+    //Výpis kníh
+    public static void DisplayBooks()
+    {
+        Console.WriteLine("Zoznam kníh:");
         foreach (var item in store)
         {
-            Console.WriteLine($"Názov knihy: {item.NazovKnihy}");
-            Console.WriteLine($"Názov knihy: {item.Autor}");
-            Console.WriteLine($"Názov knihy: {item.Rok}");
-            Console.WriteLine($"Názov knihy: {item.Zaner}");
+            Console.WriteLine($"Názov knihy: {item.NazovKnihy}, Meno autora: {item.Autor}, Rok vydania: {item.Rok}, Žáner knihy: {item.Zaner}");
         }
-            Console.WriteLine("\nStlačte Enter, aby ste sa vrátili do menu.");
-            Console.ReadLine();
-        }
+        Console.WriteLine("\nStlačte Enter, aby ste sa vrátili do menu.");
+        Console.ReadLine();
+    }
 
 
-        
 
 
-        //Nadpis menu 1
-        public static void VypisInfo()
-        {
-            Console.Clear();
-            Console.WriteLine("                                                ____");
-            Console.WriteLine("                                                \\__/");
-            Console.WriteLine("                      __  ___  __   ___  ___  ________   __   __   __    ______     ___");
-            Console.WriteLine("                     |  |/  / |  \\ |  | |  | |       /  |  \\ |  | |  |  /      |   /   \\     ");
-            Console.WriteLine("                     |  '  /  |   \\|  | |  | `---/  /   |   \\|  | |  | |  ,----'  /  ^  \\    ");
-            Console.WriteLine("                     |    <   |  . `  | |  |    /  /    |  . `  | |  | |  |      /  /_\\  \\   ");
-            Console.WriteLine("                     |  .  \\  |  |\\   | |  |   /  /----.|  |\\   | |  | |  `----./  _____  \\");
-            Console.WriteLine("                     |__|\\__\\ |__| \\__| |__|  /________||__| \\__| |__|  \\______/__/     \\__\\");
-        }
+
+    //Nadpis menu 1
+    public static void VypisInfo()
+    {
+        Console.Clear();
+        Console.WriteLine("                                                ____");
+        Console.WriteLine("                                                \\__/");
+        Console.WriteLine("                      __  ___  __   ___  ___  ________   __   __   __    ______     ___");
+        Console.WriteLine("                     |  |/  / |  \\ |  | |  | |       /  |  \\ |  | |  |  /      |   /   \\     ");
+        Console.WriteLine("                     |  '  /  |   \\|  | |  | `---/  /   |   \\|  | |  | |  ,----'  /  ^  \\    ");
+        Console.WriteLine("                     |    <   |  . `  | |  |    /  /    |  . `  | |  | |  |      /  /_\\  \\   ");
+        Console.WriteLine("                     |  .  \\  |  |\\   | |  |   /  /----.|  |\\   | |  | |  `----./  _____  \\");
+        Console.WriteLine("                     |__|\\__\\ |__| \\__| |__|  /________||__| \\__| |__|  \\______/__/     \\__\\");
+    }
 
     //Nadpis menu 2
 
@@ -406,24 +435,45 @@ public class Program
         Console.WriteLine("                     |__|\\__\\ |__| \\__| |__|  /________||__| \\__| |__|  \\______/__/     \\__\\");
     }
 
-        public static void SaveUsersToJson()
-        {
-            string json = JsonConvert.SerializeObject(users, Formatting.Indented);
-            File.WriteAllText("users.json", json);
-            Console.WriteLine("Používatelia boli uložený do users.json.");
-        }
+    public static void SaveUsersToJson()
+    {
+        string json = JsonConvert.SerializeObject(users, Formatting.Indented);
+        File.WriteAllText("users.json", json);
+        Console.WriteLine("Používatelia boli uložený do users.json.");
+    }
 
-        public static void LoadUsersFromJson()
+    public static void LoadUsersFromJson()
+    {
+        if (File.Exists("users.json"))
         {
-            if (File.Exists("users.json"))
-            {
-                string json = File.ReadAllText("users.json");
-                users = JsonConvert.DeserializeObject<List<User>>(json);
-                Console.WriteLine("Používatelia boli načítaní z users.json.");
-            }
-            else
-            {
-                Console.WriteLine("Žiadny uložený používateľ nebol nájdený.");
-            }
+            string json = File.ReadAllText("users.json");
+            users = JsonConvert.DeserializeObject<List<User>>(json);
+            Console.WriteLine("Používatelia boli načítaní z users.json.");
+        }
+        else
+        {
+            Console.WriteLine("Žiadny uložený používateľ nebol nájdený.");
         }
     }
+    public static void SaveBooksToJson()
+    {
+        string json = JsonConvert.SerializeObject(users, Formatting.Indented);
+        File.WriteAllText("books.json", json);
+        Console.WriteLine("Knihy boli uložené do books.json.");
+
+    }
+
+    public static void LoadBooksFromJson()
+    {
+        if (File.Exists("books.json"))
+        {
+            string json = File.ReadAllText("users.json");
+            store = JsonConvert.DeserializeObject<List<Book>>(json);
+            Console.WriteLine("Knihy boli načítane z books.json.");
+        }
+        else
+        {
+            Console.WriteLine("Žiadna uložena kniha nebola nájdený.");
+        }
+    }
+}
