@@ -135,7 +135,6 @@ public class Program
             }
             else if (choice == "3")
             {
-                SaveUsersToJson();
                 break;
             }
             else
@@ -256,7 +255,6 @@ public class Program
             switch (answer)
             {
                 case "1":
-                    LoadBooksFromJson();
                     DisplayBooks();
                     break;
                 case "2":
@@ -296,7 +294,7 @@ public class Program
                 case "4":
                     if (loggedInUser.CanBorrowBook())
                     {
-                        Console.WriteLine("Zadajte názov knihy na požičiavanie (alebo 0 pre návrat):");
+                        Console.WriteLine("Zadajte ID knihy na požičanie (alebo 0 pre návrat):");
                         var bookName = int.Parse(Console.ReadLine());
                         if (bookName != 0)
                         {
@@ -309,7 +307,8 @@ public class Program
                         Console.WriteLine("Nemáte povolenie na požičiavanie kníh.");
                     }
                     break;
-                case "6":
+                case "5":
+                    SaveUsersToJson();
                     SaveBooksToJson();
                     isEnd = true;
                     break;
@@ -388,7 +387,7 @@ public class Program
         Console.WriteLine("2. Pridanie knihy");
         Console.WriteLine("3. Odobratie knihy");
         Console.WriteLine("4. Požičiavanie knihy");
-        Console.WriteLine("6. Odhlásiť sa");
+        Console.WriteLine("5. Odhlásiť sa");
         Console.WriteLine("Vyberte akciu:");
     }
     //Výpis kníh
@@ -439,7 +438,7 @@ public class Program
     {
         string json = JsonConvert.SerializeObject(users, Formatting.Indented);
         File.WriteAllText("users.json", json);
-        Console.WriteLine("Používatelia boli uložený do users.json.");
+        Console.WriteLine("Používatelia boli uložený");
     }
 
     public static void LoadUsersFromJson()
@@ -448,7 +447,7 @@ public class Program
         {
             string json = File.ReadAllText("users.json");
             users = JsonConvert.DeserializeObject<List<User>>(json);
-            Console.WriteLine("Používatelia boli načítaní z users.json.");
+            Console.WriteLine("Používatelia boli načítaní");
         }
         else
         {
@@ -459,7 +458,7 @@ public class Program
     {
         string json = JsonConvert.SerializeObject(users, Formatting.Indented);
         File.WriteAllText("books.json", json);
-        Console.WriteLine("Knihy boli uložené do books.json.");
+        
 
     }
 
@@ -469,7 +468,6 @@ public class Program
         {
             string json = File.ReadAllText("users.json");
             store = JsonConvert.DeserializeObject<List<Book>>(json);
-            Console.WriteLine("Knihy boli načítane z books.json.");
         }
         else
         {
