@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace Pokemon_Game
 {
-    internal class GameEngine
+    public class GameEngine
     {
-        public Pokemon FirtstPokemon { get; set; }
+        public Pokemon FirstPokemon { get; set; }
         public Pokemon SecondPokemon { get; set; }
 
         public GameEngine()
         {
-            FirtstPokemon = new Pokemon("Pikachu");
+            FirstPokemon = new Pokemon("Pikachu");
             SecondPokemon = new Pokemon("Charizard");
         }
-
     }
 }

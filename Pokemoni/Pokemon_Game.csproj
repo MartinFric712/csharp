@@ -12,6 +12,7 @@
     <None Remove="images\Charizard.png" />
     <None Remove="images\Pikachu.png" />
     <None Remove="Pikachu.png" />
+    <None Remove="Windows\background.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +23,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Pikachu.png" />
+    <Resource Include="Windows\background.png" />
   </ItemGroup>
 
 </Project>

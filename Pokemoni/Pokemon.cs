@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pokemon_Game
 {
-    internal class Pokemon
+    public class Pokemon
     {
         public string Name { get; set; }
         public int Health { get; set; }
@@ -35,17 +35,30 @@ namespace Pokemon_Game
             return random.Next(40, 61);
         }
 
-        public int Heal()
+        public bool TakeDamage(int damage)
         {
-            Random random = new Random();
-            int healValue = random.Next(20, 71);
-            Health += healValue;
-            if (Health > 100);
+            Health -= damage;
+            if (Health <= 0)
+            {
+                Health = 0;
+                return false;
+            }
+            return true;
+        }
+
+        public void TakeHeal(int heal)
+        {
+            Health += heal;
+            if (Health >= 100)
             {
                 Health = 100;
             }
-            return Health;
+        }
 
+        public int Heal()
+        {
+            Random random = new Random();
+            return random.Next(20, 71);
         }
     }
 }
