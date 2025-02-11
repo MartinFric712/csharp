@@ -22,10 +22,9 @@ namespace Pokemoni
         {
             InitializeComponent();
 
-            Window_PokemonBattle = new Window_PokemonBattle();
-            Window_PokemonBattle.Show();
-
-            Close();
+            //Window_PokemonBattle = new Window_PokemonBattle();
+            //Window_PokemonBattle.Show();
+            //Close();
         }
     }
 }
