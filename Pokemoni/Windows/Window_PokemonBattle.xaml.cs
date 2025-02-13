@@ -20,21 +20,22 @@ namespace Pokemon_Game.Windows
     /// </summary>
     public partial class Window_PokemonBattle : Window
     {
-        public GameEngine GameEngine { get; set; } = new GameEngine();
+        public GameEngine GameEngine {  get; set; }
         public List<string> FightLogger { get; set; } = new List<string>();
-        public Window_PokemonBattle()
+        public Window_PokemonBattle(GameEngine gameEngine)
         {
             InitializeComponent();
+            GameEngine = gameEngine;
             RefreshElements();
         }
 
         private void RefreshElements()
         {
             ProgressBar_Pokemon1_HP.Value = GameEngine.FirstPokemon.Health;
-            Label_Pokemon1_HP.Content = $"{GameEngine.FirstPokemon.Health} / 100";
+            Label_Pokemon1_HP.Content = $"{GameEngine.FirstPokemon.Health} / {GameEngine.FirstPokemon.MaxHealth}";
 
             ProgressBar_Pokemon2_HP.Value = GameEngine.SecondPokemon.Health;
-            Label_Pokemon2_HP.Content = $"{GameEngine.SecondPokemon.Health} / 100";
+            Label_Pokemon2_HP.Content = $"{GameEngine.SecondPokemon.Health} / {GameEngine.SecondPokemon.MaxHealth}";
 
             ListView_FightLogger.Items.Clear();
             foreach (var log in FightLogger)

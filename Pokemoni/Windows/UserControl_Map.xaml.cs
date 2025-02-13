@@ -20,6 +20,8 @@ namespace Pokemon_Game.Windows
     /// </summary>
     public partial class UserControl_Map : UserControl
     {
+        public GameEngine GameEngine { get; set; }
+        public Dictionary<Button, Pokemon> Enemies { get; set; } = new Dictionary<Button, Pokemon>();
         public UserControl_Map()
         {
             InitializeComponent();
@@ -33,24 +35,33 @@ namespace Pokemon_Game.Windows
 
             for (int i = 0; i < 3; i++)
             {
-                var positionX = random.Next(-325, 325);
-                var positionY = random.Next(-325, 325);
-
-
+                var positionX = random.Next(-290, 290);
+                var positionY = random.Next(-290, 290);
                 Button button = new Button();
-                button.Width = 50;
+                button.Width = 100;
                 button.Height = 50;
-                button.Content = "Enemie:" + i;
                 button.Margin = new Thickness(positionX, positionY, 0, 0);
-
-
+                button.Click += Button_Click;
                 Grid_Map.Children.Add(button);
+
+
+
+                Pokemon pokemon = new Pokemon("Enemie: " + i, 200 + (100 * i), i);
+                button.Content = pokemon.Name + ", LVL: " + pokemon.Level;
+
+                Enemies.Add(button, pokemon);
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var button = (Button)sender;
+            var pokemon = Enemies[button];
 
+            GameEngine.SecondPokemon = pokemon;
+
+            var Window_PokemonBattle = new Window_PokemonBattle(GameEngine);
+            Window_PokemonBattle.Show();
         }
     }
 }
