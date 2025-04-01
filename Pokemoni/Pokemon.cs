@@ -18,7 +18,7 @@ namespace Pokemon_Game
         public Pokemon(string name, int maxHealth, int level)
         {
             Name = name;
-            MaxHealth = maxHealth;  
+            MaxHealth = MaxHealth;  
             Health = maxHealth;
             Level = level;
         }
